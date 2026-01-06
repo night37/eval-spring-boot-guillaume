@@ -15,7 +15,7 @@ public class Produit {
     private Integer id;
 
     @Column(nullable = false)
-    @Length(min = 2, message = "Le nom doit contenir entre 2 et 50 caractères.")
+    @Length(min = 2, message = "Le nom doit contenir au minimum deux caractères.")
     @NotEmpty
     private String nom;
 
