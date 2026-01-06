@@ -1,12 +1,10 @@
 package com.adrar.evalspring.controller;
 
 
-import com.adrar.evalspring.model.Produit;
-import com.adrar.evalspring.service.ProduitService;
+import com.adrar.evalspring.model.Categorie;
+import com.adrar.evalspring.service.CategorieService;
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,31 +13,32 @@ import java.util.Optional;
 @RestController
 @AllArgsConstructor
 
-public class ProduitController {
+public class CategorieController {
 
 
-    private ProduitService produitService;
-    private Produit produit;
+    private CategorieService categorieService;
 
-    @GetMapping("/produits")
+    @GetMapping("/categories")
     @ResponseStatus(HttpStatus.OK)
-    public List<Produit> afficherToutLesProduits()
+    public List<Categorie> afficherTouteLesCategories()
     {
-        return  produitService.afficherToutLesProduits();
+
+        return  categorieService.afficherTouteLesCategories();
     }
 
-    @GetMapping("/produit/{id}")
+    @GetMapping("/categorie/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public Optional<Produit> afficherProduit(@PathVariable Integer id)
+    public Optional<Categorie> afficherCategorie(@PathVariable Integer id)
     {
-        return produitService.afficherUnProduitAvecSonId(id);
+        return categorieService.afficherUneCategorieAvecSonId(id);
     }
 
-    @PostMapping("/produit")
+    @PostMapping("/categorie")
     @ResponseStatus(HttpStatus.CREATED)
-    public Produit creeUnProduit(@RequestBody Produit produit)
+    public Categorie creeUneCategorie(@RequestBody Categorie categorie)
     {
-        return produitService.ajouterUnProduit(produit);
+
+        return categorieService.ajouterUneCategorie(categorie);
     }
 
 

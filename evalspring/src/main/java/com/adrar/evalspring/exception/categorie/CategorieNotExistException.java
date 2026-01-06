@@ -1,4 +1,4 @@
-package com.adrar.evalspring.exception.produit;
+package com.adrar.evalspring.exception.categorie;
 
 public class CategorieNotExistException extends RuntimeException{
 

@@ -13,7 +13,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @ControllerAdvice
-public class AdviceProduitController {
+public class ExceptionProduitController {
 
     @ExceptionHandler(ProduitNameNeedToBeGreaterThanTwoException.class)
     public ResponseEntity<Map<String, String>> handleProduitNameNeedToBeGreaterThanTwoException(RuntimeException ex)

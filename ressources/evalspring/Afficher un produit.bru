@@ -1,0 +1,16 @@
+meta {
+  name: Afficher un produit
+  type: http
+  seq: 6
+}
+
+get {
+  url: http://localhost:9000/produit/2
+  body: none
+  auth: inherit
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

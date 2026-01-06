@@ -1,0 +1,26 @@
+meta {
+  name: Ajouter un produit avec une erreur sur le prix
+  type: http
+  seq: 9
+}
+
+post {
+  url: http://localhost:9000/produit
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "nom" : "oasis",
+    "prix": "-1",
+    "categorie": {
+      "id":"3"
+    }
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

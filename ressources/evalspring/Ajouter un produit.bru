@@ -1,0 +1,26 @@
+meta {
+  name: Ajouter un produit
+  type: http
+  seq: 4
+}
+
+post {
+  url: http://localhost:9000/produithttp://localhost:9000/produit
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "nom" : "Fanta",
+    "prix": "1.50",
+    "categorie": {
+      "id":"3"
+    }
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

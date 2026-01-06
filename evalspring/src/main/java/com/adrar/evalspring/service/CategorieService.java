@@ -1,10 +1,9 @@
 package com.adrar.evalspring.service;
-import com.adrar.evalspring.exception.produit.ProduitNameNeedToBeGreaterThanTwoException;
-import com.adrar.evalspring.exception.produit.ProduitNotExistException;
-import com.adrar.evalspring.exception.produit.ProduitPrixNeedToBeGreaterThanZeroException;
-import com.adrar.evalspring.exception.produit.ProduitsNotFoundException;
-import com.adrar.evalspring.model.Produit;
-import com.adrar.evalspring.repository.ProduitRepository;
+import com.adrar.evalspring.exception.categorie.CategorieLibeleNeedToBeGreaterThanTwoException;
+import com.adrar.evalspring.exception.categorie.CategorieNotExistException;
+import com.adrar.evalspring.exception.categorie.CategoriesNotFoundException;
+import com.adrar.evalspring.model.Categorie;
+import com.adrar.evalspring.repository.CategorieRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -13,37 +12,34 @@ import java.util.Optional;
 
 @Service
 @AllArgsConstructor
-public class ProduitService {
+public class CategorieService {
 
-    private ProduitRepository produitRepository;
+    private CategorieRepository categorieRepository;
 
 
-    public Produit ajouterUnProduit(Produit produit){
+    public Categorie ajouterUneCategorie(Categorie categorie){
 
-        if(produit.getPrix() <= 0) {
-            throw new ProduitPrixNeedToBeGreaterThanZeroException("La valeur  : " + produit.getPrix() +" doit être supérieur à zéro.");
+        if(categorie.getLibele().length() <= 2 ) {
+            throw new CategorieLibeleNeedToBeGreaterThanTwoException("Le libele  : " + categorie.getLibele() +" doit contenir au minimum deux caractères.");
         }
-        if(produit.getNom().length() <= 2 ) {
-            throw new ProduitNameNeedToBeGreaterThanTwoException("Le nom  : " + produit.getNom() +" doit contenir au minimum deux caractères.");
-        }
-        return produitRepository.save(produit);
+        return categorieRepository.save(categorie);
     }
 
-    public List<Produit> afficherToutLesProduits()
+    public List<Categorie> afficherTouteLesCategories()
     {
-        if (produitRepository.count() == 0) {
-            throw new ProduitsNotFoundException("La liste des produits est vide");
+        if (categorieRepository.count() == 0) {
+            throw new CategoriesNotFoundException("La liste des catégorie est vide");
         }
-        return (List<Produit>) produitRepository.findAll();
+        return (List<Categorie>) categorieRepository.findAll();
     }
 
-    public Optional<Produit> afficherUnProduitAvecSonId(Integer id)
+    public Optional<Categorie> afficherUneCategorieAvecSonId(Integer id)
     {
         return Optional
-                .of(produitRepository
+                .of(categorieRepository
                         .findById(id)
                         .orElseThrow(
-                                ()-> new ProduitNotExistException("Le produit avec id :" + id +  " n'existe pas")
+                                ()-> new CategorieNotExistException("La catégorie avec id :" + id +  " n'existe pas")
                         )
                 );
     }

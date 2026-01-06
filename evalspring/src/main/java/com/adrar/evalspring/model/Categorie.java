@@ -1,27 +1,20 @@
 package com.adrar.evalspring.model;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.Positive;
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;
 
 @Entity
-@Table(name="produit")
+@Table(name="categorie")
 @Data
-public class Produit {
+public class Categorie {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Integer id;
 
     @Column(nullable = false)
-    @Length(min = 2, message = "Le nom doit contenir au minimum deux caractères.")
     @NotEmpty
-    private String nom;
-
-    @Column(nullable = false)
-    @NotEmpty
-    @Positive(message = "Le prix doit être au dessus de zéro.")
-    private float prix;
+    @Length(min = 2, message = "Le libele doit contenir au minimum deux caractères.")
+    private String libele;
 
 }

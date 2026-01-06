@@ -12,7 +12,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @ControllerAdvice
-public class AdviceCategorieController {
+public class ExceptionCategorieController {
 
     @ExceptionHandler(CategoriesNotFoundException.class)
     public ResponseEntity<Map<String, String>> handleCategoriesNotFoundException(RuntimeException ex)
