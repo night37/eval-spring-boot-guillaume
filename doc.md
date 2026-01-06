@@ -9,12 +9,12 @@
   "libele": string
 }
 
-## afficher une categorie
+## Afficher une categorie
 **methode** : *GET*
 
 **url** : *basePath/categorie/{id}*
 
-## afficher toute les categories
+## Afficher toute les categories
 **methode** : *GET*
 
 **url** : *basePath/categories*
@@ -32,12 +32,12 @@
   }
 }
 
-## afficher une produit
+## Afficher une produit
 **methode** : *GET*
 
 **url** : *basePath/produit/{id}*
 
-## afficher tout les produits
+## Afficher tout les produits
 **methode** : *GET*
 
 **url** : *basePath/produits*
